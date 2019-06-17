@@ -1,8 +1,9 @@
-# input-moment 
-[![npm](https://img.shields.io/npm/v/input-moment.svg)](https://www.npmjs.com/package/input-moment)
-[![Build Status](https://travis-ci.org/wangzuo/input-moment.svg?branch=master)](https://travis-ci.org/wangzuo/input-moment)
+# react-mdatetime 
+[![npm](https://img.shields.io/npm/v/react-mdatetime).svg)](https://www.npmjs.com/package/react-mdatetime)
+[![Build Status](https://travis-ci.org/tedicela/react-mdatetime).svg?branch=master)](https://travis-ci.org/tedicela/react-mdatetime))
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
+This is a fork of the github project [input-moment](https://github.com/wangzuo/input-moment)
 React datetime picker powered by [momentjs](http://momentjs.com)
 
 The design is from https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker.
@@ -11,17 +12,19 @@ The icon is from [ionicons](http://ionicons.com/).
 
 ### Installation
 ``` sh
-npm i input-moment --save
+npm i react-mdatetime --save
 ```
 
 **Notice:** This module requires [moment](https://www.npmjs.com/package/moment) as a [peerDependency](https://docs.npmjs.com/files/package.json#peerdependencies).
 
 ### Demo
-http://wangzuo.github.io/input-moment
+http://tedicela.github.io/react-mdatetime
 
 ### Usage
 ``` javascript
 <InputMoment
+  type={"datetime"} // datetime | date | time
+	theme={"dark"} // default | dark | light
   moment={this.state.moment}
   onChange={this.handleChange}
   onSave={this.handleSave}
@@ -31,7 +34,7 @@ http://wangzuo.github.io/input-moment
   nextMonthIcon="ion-ios-arrow-right" // default
 />
 ```
-Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.
+Check [app.js](https://github.com/tedicela/react-mdatetime/blob/master/example/app.js) for a working example.
 
 ### Development
 - npm install
@@ -39,4 +42,4 @@ Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.j
 - http://localhost:8080
 
 ### License
-ISC
+MIT

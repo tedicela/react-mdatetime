@@ -33,8 +33,8 @@ class App extends Component {
             <input type="text" value={this.state.m.format('llll')} readOnly />
           </div>
           <InputMoment
-			type={"datetime"}
-			theme={"dark"}
+			      type={"datetime"}
+			      theme={"dark"}
             moment={this.state.m}
             onChange={this.handleChange}
             minStep={5}
