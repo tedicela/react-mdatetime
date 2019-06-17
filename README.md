@@ -1,14 +1,14 @@
-# react-mdatetime 
-[![npm](https://img.shields.io/npm/v/react-mdatetime).svg)](https://www.npmjs.com/package/react-mdatetime)
-[![Build Status](https://travis-ci.org/tedicela/react-mdatetime).svg?branch=master)](https://travis-ci.org/tedicela/react-mdatetime))
+# react-mdatetime
+[![npm](https://img.shields.io/npm/v/react-mdatetime.svg)](https://www.npmjs.com/package/react-mdatetime)
+[![Build Status](https://travis-ci.org/tedicela/react-mdatetime.svg?branch=master)](https://travis-ci.org/tedicela/react-mdatetime)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 This is a fork of the github project [input-moment](https://github.com/wangzuo/input-moment)
-React datetime picker powered by [momentjs](http://momentjs.com)
+React datetime/date/time picker powered by [momentjs](http://momentjs.com)
 
 The design is from https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker.
 
-The icon is from [ionicons](http://ionicons.com/).
+Icons are from [ionicons](http://ionicons.com/).
 
 ### Installation
 ``` sh
