@@ -4,11 +4,24 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 This is a fork of the github project [input-moment](https://github.com/wangzuo/input-moment)
+
 React datetime/date/time picker powered by [momentjs](http://momentjs.com)
 
 The design is from https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker.
 
 Icons are from [ionicons](http://ionicons.com/).
+
+### Features
+- [x] Just datepicker
+- [x] Just timepicker
+- [x] DateTime picker
+- [x] Built in themes (dark/light/default)
+- Multi-language and Locales
+- Inline picker
+- Dropdown picker
+- Modal picker
+- Native picker input on mobile devices (iOS, Android and other mobile OS)
+
 
 ### Installation
 ``` sh
