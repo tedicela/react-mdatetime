@@ -37,7 +37,7 @@ http://tedicela.github.io/react-mdatetime
 ``` javascript
 <InputMoment
   type={"datetime"} // datetime | date | time
-	theme={"dark"} // default | dark | light
+  theme={"dark"} // default | dark | light
   moment={this.state.moment}
   onChange={this.handleChange}
   onSave={this.handleSave}
