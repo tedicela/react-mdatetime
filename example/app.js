@@ -1,12 +1,16 @@
 import '../src/less/input-moment.less';
 import '../src/less/theme-dark.less';
 import '../src/less/theme-light.less';
+import '../src/less/dropdown-picker.less';
 import './app.less';
 import moment from 'moment';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import InputMoment from '../src/InputMoment.js';
 import packageJson from '../package.json';
+
+import DropdownPicker from "../src/DropdownPicker.js";
+
 //moment.locale(props.locale);
 
 class App extends Component {
@@ -40,6 +44,14 @@ class App extends Component {
             onChange={this.handleChange}
             minStep={5}
             onSave={this.handleSave}
+          />
+          <DropdownPicker
+              moment={this.state.m}
+              type={"datetime"}
+              theme={"dark"}
+              onChange={this.handleChange}
+              minStep={5}
+              onSave={this.handleSave}
           />
         </form>
       </div>
