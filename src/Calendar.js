@@ -4,7 +4,7 @@ import cx from 'classnames';
 import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
-const Day = ({ i, w, d, className, ...props }) => {
+const Day = ({ i, w, d, m, className, ...props }) => {
   const prevMonth = w === 0 && i > 7;
   const nextMonth = w >= 4 && i <= 14;
   
@@ -14,7 +14,7 @@ const Day = ({ i, w, d, className, ...props }) => {
     'prev-month': prevMonth,
     'next-month': nextMonth,
     'current-day': !prevMonth && !nextMonth && i === d,
-    'actual-day': today.date() == i && today.month() == props.m.month(),
+    'actual-day': today.date() == i && today.month() == m.month(),
   });
 
   return <td className={cls} {...props}>{i}</td>;
@@ -76,7 +76,7 @@ export default class Calendar extends Component {
     
     let currentMonth = m.format('MMMM YYYY');
     currentMonth = currentMonth.toLowerCase().charAt(0).toUpperCase() + currentMonth.slice(1);
-    
+
     return (
       <div className={cx('m-calendar', this.props.className)}>
         <div className="toolbar">

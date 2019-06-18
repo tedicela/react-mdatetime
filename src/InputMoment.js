@@ -54,6 +54,7 @@ class InputMoment extends Component {
       onSave,
       firstDayOfWeek,
       locale,
+      labels,
       ...props
     } = this.props;
     
@@ -71,7 +72,7 @@ class InputMoment extends Component {
             className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
             onClick={e => this.handleClickTab(e, 0)}
           >
-            {this.props.labels.date}
+            {labels.date}
           </button>}
           {['datetime'].indexOf(type) > - 1 &&
           <button
@@ -79,7 +80,7 @@ class InputMoment extends Component {
             className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
             onClick={e => this.handleClickTab(e, 1)}
           >
-            {this.props.labels.time}
+            {labels.time}
           </button>}
         </div>
 
@@ -113,7 +114,7 @@ class InputMoment extends Component {
           className="im-btn btn-save ion-checkmark"
           onClick={this.handleSave}
           >
-            {this.props.labels.save}
+            {labels.save}
           </button>}
 
           <button
@@ -121,7 +122,7 @@ class InputMoment extends Component {
           className="im-btn btn-cancel ion-close"
           onClick={this.props.onCancel && this.props.onCancel}
           >
-            {this.props.labels.cancel}
+            {labels.cancel}
           </button>
 
         </div>
