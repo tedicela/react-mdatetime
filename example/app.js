@@ -5,7 +5,7 @@ import './app.less';
 import moment from 'moment';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import InputMoment from '../src/input-moment';
+import InputMoment from '../src/InputMoment.jsx';
 import packageJson from '../package.json';
 
 class App extends Component {

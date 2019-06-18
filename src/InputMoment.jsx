@@ -1,8 +1,8 @@
 import cx from 'classnames';
 import moment from 'moment';
 import React, { Component } from 'react';
-import Calendar from './calendar';
-import Time from './time';
+import Calendar from './Calendar.jsx';
+import Time from './Time.jsx';
 
 class InputMoment extends Component {
   static defaultProps = {
