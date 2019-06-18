@@ -8,11 +8,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import InputMoment from '../src/InputMoment.js';
 import packageJson from '../package.json';
-<<<<<<< HEAD
+
 import DropdownPicker from "../src/DropdownPicker.js";
-=======
+
 //moment.locale(props.locale);
->>>>>>> d21b20c019868cf77c4560e1dfcf1b9fa67ec16b
 
 class App extends Component {
   state = {
