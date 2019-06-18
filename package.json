@@ -1,6 +1,6 @@
 {
-  "name": "input-moment",
-  "version": "0.4.0",
+  "name": "react-mdatetime",
+  "version": "1.0.0",
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,20 @@
     "build": "npm run build-js && npm run build-css",
     "deploy": "rm -rf .publish && npm run build && github-pages-deploy",
     "pretest": "npm run build",
-    "test": "jest",
-    "prepublish": "npm test",
-    "clean": "rm dist/* && rm example/bundle*"
+    "clean": "rm dist/* && rm example/bundle*",
+    "test": " echo 'test' "
   },
   "github-pages-deploy": {
     "src": "example"
   },
-  "author": "Wang Zuo",
+  "collaborators": [
+    {
+      "name": "Wang Zuo"
+    },
+    {
+      "name": "Tedi Cela"
+    }
+  ],
   "license": "ISC",
   "peerDependencies": {
     "moment": "^2.10.6",
@@ -34,7 +40,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.21.0",
     "github-pages-deploy": "0.0.3",
-    "jest": "^19.0.2",
     "json-loader": "^0.5.4",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
@@ -54,7 +59,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzuo/input-moment.git"
+    "url": "git+https://github.com/tedicela/react-mdatetime.git"
   },
   "keywords": [
     "react",
@@ -65,7 +70,7 @@
     "moment"
   ],
   "bugs": {
-    "url": "https://github.com/wangzuo/input-moment/issues"
+    "url": "https://github.com/tedicela/react-mdatetime/issues"
   },
-  "homepage": "https://github.com/wangzuo/input-moment#readme"
+  "homepage": "https://github.com/tedicela/react-mdatetime#readme"
 }
