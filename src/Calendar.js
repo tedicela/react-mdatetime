@@ -21,6 +21,14 @@ const Day = ({ i, w, d, className, ...props }) => {
 };
 
 export default class Calendar extends Component {
+  
+  static defaultProps = {
+    firstDayOfWeek: 1,
+  }
+  constructor(props){
+    super(props);
+    moment.locale(props.locale);
+  }
   selectDate = (i, w) => {
     const prevMonth = w === 0 && i > 7;
     const nextMonth = w >= 4 && i <= 14;
@@ -50,20 +58,32 @@ export default class Calendar extends Component {
     const d1 = m.clone().subtract(1, 'month').endOf('month').date();
     const d2 = m.clone().date(1).day();
     const d3 = m.clone().endOf('month').date();
-    const days = [].concat(
-      range(d1 - d2 + 1, d1 + 1),
-      range(1, d3 + 1),
-      range(1, 42 - d3 - d2 + 1)
-    );
-    const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+    let deltaDayOfWeek = this.props.firstDayOfWeek < 7 ? 1 + this.props.firstDayOfWeek : 1;
+    
+    const days = [].concat(
+      range(d1 - d2 + deltaDayOfWeek, d1 + 1),
+      range(1, d3 + 1),
+      range(1, 42 - d3 - d2 + deltaDayOfWeek)
+    );
+
+    let weeks = [];
+    for(let i=0; i<7; i++){
+      let dayNr = this.props.firstDayOfWeek+i;
+      dayNr = dayNr > 7 ? (dayNr - 7) : dayNr -1;
+      weeks.push(moment().weekday(dayNr).format("ddd"));
+    }
+    
+    let currentMonth = m.format('MMMM YYYY');
+    currentMonth = currentMonth.toLowerCase().charAt(0).toUpperCase() + currentMonth.slice(1);
+    
     return (
       <div className={cx('m-calendar', this.props.className)}>
         <div className="toolbar">
           <button type="button" className="prev-month" onClick={this.prevMonth}>
             <i className={this.props.prevMonthIcon} />
           </button>
-          <span className="current-date">{m.format('MMMM YYYY')}</span>
+          <span className="current-date">{currentMonth}</span>
           <button type="button" className="next-month" onClick={this.nextMonth}>
             <i className={this.props.nextMonthIcon} />
           </button>
