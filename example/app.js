@@ -5,7 +5,7 @@ import './app.less';
 import moment from 'moment';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import InputMoment from '../src/InputMoment.jsx';
+import InputMoment from '../src/InputMoment.js';
 import packageJson from '../package.json';
 
 class App extends Component {
@@ -33,8 +33,8 @@ class App extends Component {
             <input type="text" value={this.state.m.format('llll')} readOnly />
           </div>
           <InputMoment
-			      type={"datetime"}
-			      theme={"dark"}
+			type={"datetime"}
+			theme={"dark"}
             moment={this.state.m}
             onChange={this.handleChange}
             minStep={5}
