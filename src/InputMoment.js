@@ -64,7 +64,6 @@ class InputMoment extends Component {
 
     return (
       <div className={cls} {...props}>
-	      <div className="arrow-up"></div>
         <div className="options">
           
           {['datetime'].indexOf(type) > - 1 &&
@@ -107,7 +106,7 @@ class InputMoment extends Component {
           />}
         </div>
 
-		    <div className="btn-container" >
+		    {/*<div className="btn-container" >
           
           {this.props.onSave &&
           <button
@@ -126,7 +125,7 @@ class InputMoment extends Component {
             {labels.cancel}
           </button>
 
-        </div>
+          </div>*/}
       </div>
     );
   }
