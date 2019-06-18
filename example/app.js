@@ -7,12 +7,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import InputMoment from '../src/InputMoment.js';
 import packageJson from '../package.json';
+//moment.locale(props.locale);
 
 class App extends Component {
   state = {
     m: moment()
   };
-
   handleChange = m => {
     this.setState({ m });
   };
@@ -33,8 +33,9 @@ class App extends Component {
             <input type="text" value={this.state.m.format('llll')} readOnly />
           </div>
           <InputMoment
-			type={"datetime"}
-			theme={"dark"}
+            locale={"it"}
+			      type={"datetime"}
+			      theme={"dark"}
             moment={this.state.m}
             onChange={this.handleChange}
             minStep={5}

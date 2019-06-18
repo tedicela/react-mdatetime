@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import InputSlider from 'react-input-slider';
 
 export default class extends Component {
+  constructor(props){
+    super(props);
+    moment.locale(props.locale);
+  }
   changeHours = pos => {
     const m = this.props.moment;
     m.hours(pos.x);

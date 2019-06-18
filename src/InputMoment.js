@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import moment from 'moment';
 import React, { Component } from 'react';
 import Calendar from './Calendar.js';
 import Time from './Time.js';
@@ -11,7 +10,17 @@ class InputMoment extends Component {
     minStep: 1,
     hourStep: 1,
     type: "datetime",
-    theme: "default"
+    theme: "default",
+    labels:{
+      save:"Save",
+      cancel:"Cancel",
+      date:"Date",
+      time:"Time",
+      hours:"Hours",
+      minutes:"Minutes",
+    },
+    firstDayOfWeek: 1,
+    locale: 'en',
   };
   
   constructor(props){
@@ -34,8 +43,8 @@ class InputMoment extends Component {
   render() {
     const { tab } = this.state;
     const {
-	  type,
-	  theme,
+	    type,
+	    theme,
       moment: m,
       className,
       prevMonthIcon,
@@ -43,11 +52,15 @@ class InputMoment extends Component {
       minStep,
       hourStep,
       onSave,
+      firstDayOfWeek,
+      locale,
       ...props
     } = this.props;
     
     const cls = cx('m-input-moment', className, theme !== 'default' ? theme : null);
-	
+    
+    m.locale(locale);
+
     return (
       <div className={cls} {...props}>
         <div className="options">
@@ -58,7 +71,7 @@ class InputMoment extends Component {
             className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
             onClick={e => this.handleClickTab(e, 0)}
           >
-            Date
+            {this.props.labels.date}
           </button>}
           {['datetime'].indexOf(type) > - 1 &&
           <button
@@ -66,7 +79,7 @@ class InputMoment extends Component {
             className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
             onClick={e => this.handleClickTab(e, 1)}
           >
-            Time
+            {this.props.labels.time}
           </button>}
         </div>
 
@@ -78,6 +91,8 @@ class InputMoment extends Component {
             onChange={this.props.onChange}
             prevMonthIcon={this.props.prevMonthIcon}
             nextMonthIcon={this.props.nextMonthIcon}
+            firstDayOfWeek={firstDayOfWeek}
+            locale={locale}
           />}
           {['datetime','time'].indexOf(type) > - 1 &&
           <Time
@@ -86,27 +101,30 @@ class InputMoment extends Component {
             minStep={this.props.minStep}
             hourStep={this.props.hourStep}
             onChange={this.props.onChange}
+            locale={locale}
           />}
         </div>
 
-		<div className="btn-container" >
-			{this.props.onSave ? (
-			  <button
-				type="button"
-				className="im-btn btn-save ion-checkmark"
-				onClick={this.handleSave}
-			  >
-				Save
-			  </button>
-			) : null}
-			  <button
-				type="button"
-				className="im-btn btn-cancel ion-close"
-				onClick={this.props.onCancel && this.props.onCancel}
-			  >
-				Cancel
-			  </button>
-          </div>
+		    <div className="btn-container" >
+          
+          {this.props.onSave &&
+          <button
+          type="button"
+          className="im-btn btn-save ion-checkmark"
+          onClick={this.handleSave}
+          >
+            {this.props.labels.save}
+          </button>}
+
+          <button
+          type="button"
+          className="im-btn btn-cancel ion-close"
+          onClick={this.props.onCancel && this.props.onCancel}
+          >
+            {this.props.labels.cancel}
+          </button>
+
+        </div>
       </div>
     );
   }
