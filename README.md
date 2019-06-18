@@ -16,8 +16,9 @@ Icons are from [ionicons](http://ionicons.com/).
 - [x] Just timepicker
 - [x] DateTime picker
 - [x] Built in themes (dark/light/default)
-- Multi-language and Locales
-- Inline picker
+- [x] Multi-language and Locales
+- [x] First day of the week
+- [x] Inline picker
 - Dropdown picker
 - Modal picker
 - Native picker input on mobile devices (iOS, Android and other mobile OS)
