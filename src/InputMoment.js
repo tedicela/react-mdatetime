@@ -50,6 +50,7 @@ class InputMoment extends Component {
 	
     return (
       <div className={cls} {...props}>
+	      <div className="arrow-up"></div>
         <div className="options">
           
           {['datetime'].indexOf(type) > - 1 &&
