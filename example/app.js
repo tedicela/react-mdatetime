@@ -39,7 +39,7 @@ class App extends Component {
             <DropdownPicker
                 moment={this.state.m}
                 type={"datetime"}
-                theme={"dark"}
+                theme={"light"}
                 onChange={this.handleChange}
                 minStep={5}
                 onSave={this.handleSave}

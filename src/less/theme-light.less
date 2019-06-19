@@ -8,6 +8,11 @@
 
 .light{
 	background-color: @color-light;
+	&.arrow-up{
+		&::after{
+			border-color: @color-light transparent !important;
+		}
+	}
 	.btn-save {
 		background-color: @color-blue;
 	}

@@ -5,6 +5,11 @@
 
 .dark{
 	background-color: @color-dark;
+	&.arrow-up{
+		&::after{
+			border-color: @color-dark transparent !important;
+		}
+	}
 	.btn-save {
 		background-color: @color-blue;
 	}
