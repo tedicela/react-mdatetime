@@ -2,6 +2,7 @@ import '../src/less/input-moment.less';
 import '../src/less/theme-dark.less';
 import '../src/less/theme-light.less';
 import '../src/less/dropdown-picker.less';
+
 import './app.less';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -33,26 +34,32 @@ class App extends Component {
         </h1>
         <h2>{packageJson.description}</h2>
         <form>
-          <div className="input">
+
+          <div className="m-t">
+            <DropdownPicker
+                moment={this.state.m}
+                type={"datetime"}
+                theme={"light"}
+                onChange={this.handleChange}
+                minStep={5}
+                onSave={this.handleSave}
+            />
+          </div>
+
+          {/* <div className="input m-t">
             <input type="text" value={this.state.m.format('llll')} readOnly />
           </div>
-          <InputMoment
-            locale={"it"}
-			      type={"datetime"}
-			      theme={"dark"}
-            moment={this.state.m}
-            onChange={this.handleChange}
-            minStep={5}
-            onSave={this.handleSave}
-          />
-          <DropdownPicker
-              moment={this.state.m}
+          <div className="m-b">
+            <InputMoment
+              locale={"it"}
               type={"datetime"}
               theme={"dark"}
+              moment={this.state.m}
               onChange={this.handleChange}
               minStep={5}
               onSave={this.handleSave}
-          />
+            />
+          </div> */}
         </form>
       </div>
     );
