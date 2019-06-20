@@ -10,12 +10,11 @@ const randomStr = (length = 5)=>{
 
 	return text;
 };
-const elementPosition = (el)=>{
-	
-	return{
-		top: 100
-	};
-	
+const elementPosition = (el_id)=>{
+	console.log("el_id: ", el_id);
+	let el = document.getElementById(el_id);
+	console.log("el: ", el);
+
 	var rect = el.getBoundingClientRect(),
 		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -44,21 +43,23 @@ class DropdownPicker extends Component {
 
 		const format = this.props.format ? this.props.format : "LLLL";
 		const readableValue = this.props.moment.format(format);
-
+		
 		return(
 			<div>
-				<input className="form-control" type="text" onClick={this.open.bind(this)} value={readableValue} />
+				<input id={this.input_id} className="form-control" type="text" onClick={this.open.bind(this)} value={readableValue} />
 				{this.state.open === true &&
 				<React.Fragment>
 				<div style={{position: "relative"}}>
 					<InputMoment
-						className={"dropdown "+(elementPosition(document.getElementById(this.input_id)).top < 500 ? "arrow-up" : "arrow-down")}
+						className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
 						moment={this.props.moment}
 						type={this.props.type}
 						theme={this.props.theme}
 						onChange={this.props.onChange}
 						minStep={this.props.minStep}
 						onSave={this.props.onSave}
+						locale={this.props.locale}
+						labels={this.props.labels}
 						onCancel={this.toggle.bind(this)}
 					/>
 				</div>

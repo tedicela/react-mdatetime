@@ -36,22 +36,22 @@ class App extends Component {
         </h1>
         <h2>{packageJson.description}</h2>
         <form>
+       
+        <p>Dropdown datetime picker: </p>
+        <div className="m-t">
+          <DropdownPicker
+            locale={"it"}
+            moment={this.state.m}
+            type={"datetime"}
+            theme={"dark"}
+            onChange={this.handleChange}
+            minStep={5}
+            onSave={this.handleSave}
+          />
+        </div>
 
-          <div className="m-t">
-            <ModalPicker
-                moment={this.state.m}
-                type={"datetime"}
-                theme={"dark"}
-                onChange={this.handleChange}
-                minStep={5}
-                onSave={this.handleSave}
-            />
-          </div>
-
-          {/* <div className="input m-t">
-            <input type="text" value={this.state.m.format('llll')} readOnly />
-          </div>
-          <div className="m-b">
+        <p>Inline datetime picker: </p>
+        <div className="m-t">
             <InputMoment
               locale={"it"}
               type={"datetime"}
@@ -61,7 +61,42 @@ class App extends Component {
               minStep={5}
               onSave={this.handleSave}
             />
-          </div> */}
+          </div>
+
+          <p>Modal datetime picker: </p>
+          <div className="m-t">
+            <ModalPicker
+              locale={"it"}
+              moment={this.state.m}
+              type={"date"}
+              theme={"light"}
+              onChange={this.handleChange}
+              minStep={5}
+              onSave={this.handleSave}
+              labels={{
+                save: "Salva",
+                cancel: "Annulla",
+                date: "Data",
+                time: "Ora",
+                hours: "Ore",
+                minutes: "Minuti",
+              }}
+            />
+          </div>
+
+          <p>Dropdown datetime picker: </p>
+          <div className="m-t">
+            <DropdownPicker
+              locale={"it"}
+              moment={this.state.m}
+              type={"datetime"}
+              theme={"dark"}
+              onChange={this.handleChange}
+              minStep={5}
+              onSave={this.handleSave}
+            />
+          </div>
+          
         </form>
       </div>
     );

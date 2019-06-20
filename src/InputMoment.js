@@ -93,6 +93,7 @@ class InputMoment extends Component {
 						prevMonthIcon={this.props.prevMonthIcon}
 						nextMonthIcon={this.props.nextMonthIcon}
 						firstDayOfWeek={firstDayOfWeek}
+						labels={this.props.labels}
 						locale={locale}
 					/>}
 					{['datetime', 'time'].indexOf(type) > -1 &&
@@ -103,6 +104,7 @@ class InputMoment extends Component {
 						hourStep={this.props.hourStep}
 						onChange={this.props.onChange}
 						locale={locale}
+						labels={this.props.labels}
 					/>}
 				</div>
 				{this.props.showButtons === true ?

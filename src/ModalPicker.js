@@ -30,6 +30,7 @@ class ModalPicker extends Component {
 				<React.Fragment>
 				<div className={"modal-picker"}>
 					<InputMoment
+						locale={this.props.locale}
 						moment={this.props.moment}
 						type={this.props.type}
 						theme={this.props.theme}
@@ -37,6 +38,7 @@ class ModalPicker extends Component {
 						minStep={this.props.minStep}
 						onSave={this.props.onSave}
 						onCancel={this.toggle.bind(this)}
+						labels={this.props.labels}
 						showButtons={true}
 					/>
 

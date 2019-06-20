@@ -67,11 +67,16 @@ export default class Calendar extends Component {
       range(1, 42 - d3 - d2 + deltaDayOfWeek)
     );
 
+    // moment().weekdaysShort(true);
     let weeks = [];
     for(let i=0; i<7; i++){
       let dayNr = this.props.firstDayOfWeek+i;
       dayNr = dayNr > 7 ? (dayNr - 7) : dayNr -1;
-      weeks.push(moment().weekday(dayNr).format("ddd"));
+      let shortDay = moment().weekday(dayNr).format("ddd");
+      
+      console.log("shortDay: ", shortDay);
+
+      weeks.push(shortDay);
     }
     
     let currentMonth = m.format('MMMM YYYY');
