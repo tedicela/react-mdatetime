@@ -2,7 +2,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import packageJson from '../package.json';
-import DateTimePicker from "../src/DateTimePicker";
+import DateTimePicker from "../src/index";
 
 import './app.less';
 

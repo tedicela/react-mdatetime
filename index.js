@@ -1,1 +1,1 @@
-module.exports = require('./lib/InputMoment');
+module.exports = require('./lib/index');
