@@ -32,7 +32,7 @@ npm i react-mdatetime --save
 **Notice:** This module requires [moment](https://www.npmjs.com/package/moment) as a [peerDependency](https://docs.npmjs.com/files/package.json#peerdependencies).
 
 ### Demo
-http://tedicela.github.io/react-mdatetime
+http://tedicela.github.io/react-mdatetime/example
 
 ### Usage
 ``` javascript
