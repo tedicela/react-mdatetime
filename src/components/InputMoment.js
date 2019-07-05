@@ -2,6 +2,7 @@ import cx from 'classnames';
 import React, {Component} from 'react';
 import Calendar from './Calendar.js';
 import Time from './Time.js';
+import moment from 'moment';
 
 class InputMoment extends Component {
 	static defaultProps = {
@@ -26,32 +27,34 @@ class InputMoment extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			value: null,
 			tab: props.type == "time" ? 1 : 0
 		};
 	}
-
+	handleChange = (m) => {
+		this.setState({value: m});
+		if(this.props.showButtons) return;
+		this.props.onChange(this.props.name, m);
+	}
 	handleClickTab = (e, tab) => {
 		e.preventDefault();
 		this.setState({tab: tab});
-	};
-
+	}
 	handleSave = e => {
 		e.preventDefault();
-		if (this.props.onSave) this.props.onSave();
-	};
-
+		this.props.onChange(this.props.name, this.state.value);
+	}
 	render() {
 		const {tab} = this.state;
+
 		const {
 			type,
 			theme,
-			moment: m,
 			className,
 			prevMonthIcon,
 			nextMonthIcon,
 			minStep,
 			hourStep,
-			onSave,
 			firstDayOfWeek,
 			locale,
 			labels,
@@ -60,7 +63,9 @@ class InputMoment extends Component {
 
 		const cls = cx('m-input-moment', className, theme !== 'default' ? theme : null);
 
+		const m = this.state.value ? this.state.value : this.props.moment ? this.props.moment : moment();
 		m.locale(locale);
+
 
 		return (
 			<div className={cls} {...props}>
@@ -89,7 +94,7 @@ class InputMoment extends Component {
 					<Calendar
 						className={cx('tab', {'is-active': tab === 0})}
 						moment={m}
-						onChange={this.props.onChange}
+						onChange={this.handleChange}
 						prevMonthIcon={this.props.prevMonthIcon}
 						nextMonthIcon={this.props.nextMonthIcon}
 						firstDayOfWeek={firstDayOfWeek}
@@ -100,24 +105,22 @@ class InputMoment extends Component {
 					<Time
 						className={cx('tab', {'is-active': tab === 1})}
 						moment={m}
+						onChange={this.handleChange}
 						minStep={this.props.minStep}
 						hourStep={this.props.hourStep}
-						onChange={this.props.onChange}
 						locale={locale}
 						labels={this.props.labels}
 					/>}
 				</div>
 				{this.props.showButtons === true ?
 					<div className="btn-container">
-						{this.props.onSave &&
 						<button
 							type="button"
 							className="im-btn btn-save ion-checkmark"
 							onClick={this.handleSave}
 						>
 							{labels.save}
-						</button>}
-
+						</button>
 						<button
 							type="button"
 							className="im-btn btn-cancel ion-close"

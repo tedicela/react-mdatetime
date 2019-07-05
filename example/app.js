@@ -1,31 +1,22 @@
-import '../src/less/input-moment.less';
-import '../src/less/theme-dark.less';
-import '../src/less/theme-light.less';
-import '../src/less/dropdown-picker.less';
-import '../src/less/modal-picker.less';
-
-import './app.less';
 import moment from 'moment';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import InputMoment from '../src/InputMoment.js';
 import packageJson from '../package.json';
+import DateTimePicker from "../src/DateTimePicker";
 
-import DropdownPicker from "../src/DropdownPicker.js";
-import ModalPicker from "../src/ModalPicker.js";
+import './app.less';
 
 //moment.locale(props.locale);
 
 class App extends Component {
   state = {
-    m: moment()
+    dropdown_picker1: moment(),
+    input_moment: moment(),
+    modal_picker: moment(),
+    dropdown_picker2: moment(),
   };
-  handleChange = m => {
-    this.setState({ m });
-  };
-
-  handleSave = () => {
-    console.log('saved', this.state.m.format('llll'));
+  handleChange = (name, m) => {
+    this.setState({[name]: m});
   };
 
   render() {
@@ -39,40 +30,43 @@ class App extends Component {
        
         <p>Dropdown datetime picker: </p>
         <div className="m-t">
-          <DropdownPicker
+          <DateTimePicker
+            mode="dropdown"
             locale={"it"}
-            moment={this.state.m}
+            moment={this.state.dropdown_picker1}
             type={"datetime"}
             theme={"dark"}
+            name="dropdown_picker1"
             onChange={this.handleChange}
             minStep={5}
-            onSave={this.handleSave}
           />
         </div>
 
         <p>Inline datetime picker: </p>
         <div className="m-t">
-            <InputMoment
+            <DateTimePicker
+              mode="inline"
               locale={"it"}
               type={"datetime"}
               theme={"dark"}
-              moment={this.state.m}
+              moment={this.state.input_moment}
+              name="input_moment"
               onChange={this.handleChange}
               minStep={5}
-              onSave={this.handleSave}
             />
           </div>
 
           <p>Modal datetime picker: </p>
           <div className="m-t">
-            <ModalPicker
+            <DateTimePicker
+              //mode="modal"
               locale={"it"}
-              moment={this.state.m}
+              value={this.state.modal_picker}
               type={"date"}
               theme={"light"}
+              name="modal_picker"
               onChange={this.handleChange}
               minStep={5}
-              onSave={this.handleSave}
               labels={{
                 save: "Salva",
                 cancel: "Annulla",
@@ -86,14 +80,15 @@ class App extends Component {
 
           <p>Dropdown datetime picker: </p>
           <div className="m-t">
-            <DropdownPicker
+            <DateTimePicker
+              mode="dropdown"
               locale={"it"}
-              moment={this.state.m}
+              moment={this.state.dropdown_picker2}
               type={"datetime"}
               theme={"dark"}
+              name="dropdown_picker2"
               onChange={this.handleChange}
               minStep={5}
-              onSave={this.handleSave}
             />
           </div>
           

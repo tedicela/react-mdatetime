@@ -62,7 +62,7 @@ export default class Calendar extends Component {
     let d2 = m.clone().date(1).day() - deltaDayOfWeek;
     d2 = d2 < 0 ? 7 + d2 : d2;
     const d3 = m.clone().endOf('month').date();
-    
+
     const days = [].concat(
       range(d1 - d2 + 1, d1 + 1),
       range(1, d3 + 1),

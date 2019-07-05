@@ -42,30 +42,29 @@ class DropdownPicker extends Component {
 	render() {
 
 		const format = this.props.format ? this.props.format : "LLLL";
-		const readableValue = this.props.moment.format(format);
+		const readableValue = this.props.moment ? this.props.moment.format(format) : null;
 		
 		return(
 			<div>
 				<input id={this.input_id} className="form-control" type="text" onClick={this.open.bind(this)} value={readableValue} />
 				{this.state.open === true &&
 				<React.Fragment>
-				<div style={{position: "relative"}}>
-					<InputMoment
-						className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
-						moment={this.props.moment}
-						type={this.props.type}
-						theme={this.props.theme}
-						onChange={this.props.onChange}
-						minStep={this.props.minStep}
-						onSave={this.props.onSave}
-						locale={this.props.locale}
-						labels={this.props.labels}
-						onCancel={this.toggle.bind(this)}
-					/>
-				</div>
-				<div className="back-layer" onClick={this.close.bind(this)} ></div>
-				</React.Fragment>
-				}
+					<div style={{position: "relative"}}>
+						<InputMoment
+							className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
+							moment={this.props.moment}
+							type={this.props.type}
+							theme={this.props.theme}
+							name={this.props.name}
+							onChange={this.props.onChange}
+							minStep={this.props.minStep}
+							locale={this.props.locale}
+							labels={this.props.labels}
+							onCancel={this.toggle.bind(this)}
+						/>
+					</div>
+					<div className="back-layer" onClick={this.close.bind(this)} ></div>
+				</React.Fragment>}
 			</div>
 		)
 	}
