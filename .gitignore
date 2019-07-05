@@ -28,7 +28,7 @@ node_modules
 
 .publish
 
-example/bundle*
+#example/bundle*
 
 dist
 lib
