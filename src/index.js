@@ -1,4 +1,4 @@
-import '../src/less/style.less';
+import './less/style.less';
 
 import React from 'react';
 import InputMoment from './components/InputMoment.js';
