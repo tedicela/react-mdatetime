@@ -19,8 +19,8 @@ Icons are from [ionicons](http://ionicons.com/).
 - [x] Multi-language and Locales
 - [x] First day of the week
 - [x] Inline picker
-- Dropdown picker
-- Modal picker
+- [x] Dropdown picker
+- [x] Modal picker
 - Native picker input on mobile devices (iOS, Android and other mobile OS)
 
 
