@@ -53,32 +53,27 @@ export default class Calendar extends Component {
   };
 
   render() {
+    
+    let deltaDayOfWeek = this.props.firstDayOfWeek < 7 ? this.props.firstDayOfWeek : this.props.firstDayOfWeek - 7;
+
     const m = this.props.moment;
     const d = m.date();
     const d1 = m.clone().subtract(1, 'month').endOf('month').date();
-    const d2 = m.clone().date(1).day();
+    let d2 = m.clone().date(1).day() - deltaDayOfWeek;
+    d2 = d2 < 0 ? 7 + d2 : d2;
     const d3 = m.clone().endOf('month').date();
-
-    let deltaDayOfWeek = this.props.firstDayOfWeek < 7 ? 1 + this.props.firstDayOfWeek : 1;
     
     const days = [].concat(
-      range(d1 - d2 + deltaDayOfWeek, d1 + 1),
+      range(d1 - d2 + 1, d1 + 1),
       range(1, d3 + 1),
-      range(1, 42 - d3 - d2 + deltaDayOfWeek)
+      range(1, 42 - d3 - d2 + 1)
     );
-
-    // moment().weekdaysShort(true);
+    
     let weeks = [];
     for(let i=0; i<7; i++){
-      let dayNr = this.props.firstDayOfWeek+i;
-      dayNr = dayNr > 7 ? (dayNr - 7) : dayNr -1;
-      let shortDay = moment().weekday(dayNr).format("ddd");
-      
-      console.log("shortDay: ", shortDay);
-
-      weeks.push(shortDay);
+      weeks.push(moment.weekdaysShort(this.props.firstDayOfWeek+i));
     }
-    
+
     let currentMonth = m.format('MMMM YYYY');
     currentMonth = currentMonth.toLowerCase().charAt(0).toUpperCase() + currentMonth.slice(1);
 
