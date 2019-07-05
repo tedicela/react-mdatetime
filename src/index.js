@@ -1,8 +1,4 @@
-import '../src/less/input-moment.less';
-import '../src/less/theme-dark.less';
-import '../src/less/theme-light.less';
-import '../src/less/dropdown-picker.less';
-import '../src/less/modal-picker.less';
+import '../src/less/style.less';
 
 import React from 'react';
 import InputMoment from './components/InputMoment.js';

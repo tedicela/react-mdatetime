@@ -1,6 +1,6 @@
 module.exports = {
   entry: {
-    'dist/input-moment': './index.js',
+    'dist/index': './index.js',
     'example/bundle': './example/app.js'
   },
   output: {
