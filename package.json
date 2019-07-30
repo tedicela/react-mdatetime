@@ -1,8 +1,8 @@
 {
   "name": "react-mdatetime",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React datetime picker powered by momentjs",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "webpack-dev-server -c --port=8080",
     "build-js": "rm -rf lib && babel src --out-dir lib && cp -rf src/less/ lib/less && webpack -p",
