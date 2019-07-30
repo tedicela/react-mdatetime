@@ -1,8 +1,8 @@
 {
   "name": "react-mdatetime",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "React datetime picker powered by momentjs",
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "scripts": {
     "start": "webpack-dev-server -c --port=8080",
     "build-js": "rm -rf lib && babel src --out-dir lib && cp -rf src/less/ lib/less && webpack -p",
@@ -26,6 +26,11 @@
   ],
   "license": "ISC",
   "peerDependencies": {
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "style-loader": "^0.13.0",
+    "css-loader": "^0.21.0",
     "moment": "^2.10.6",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"

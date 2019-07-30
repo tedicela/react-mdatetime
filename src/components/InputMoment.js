@@ -65,8 +65,7 @@ class InputMoment extends Component {
 
 		const m = this.state.value ? this.state.value : this.props.moment ? this.props.moment : moment();
 		m.locale(locale);
-
-
+		
 		return (
 			<div className={cls} {...props}>
 				<div className="options">
