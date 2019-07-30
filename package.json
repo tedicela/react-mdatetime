@@ -1,6 +1,6 @@
 {
   "name": "react-mdatetime",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {

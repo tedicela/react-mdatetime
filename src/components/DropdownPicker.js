@@ -11,10 +11,7 @@ const randomStr = (length = 5)=>{
 	return text;
 };
 const elementPosition = (el_id)=>{
-	console.log("el_id: ", el_id);
 	let el = document.getElementById(el_id);
-	console.log("el: ", el);
-
 	var rect = el.getBoundingClientRect(),
 		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
