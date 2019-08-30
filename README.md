@@ -29,6 +29,13 @@ Icons are from [ionicons](http://ionicons.com/).
 npm i react-mdatetime --save
 ```
 
+You install it's dependencies too:
+``` sh
+npm i less less-loader style-loader css-loader --save
+```
+
+**ATTENTION:** Make sure you have configured you use these loaders
+
 **Notice:** This module requires [moment](https://www.npmjs.com/package/moment) as a [peerDependency](https://docs.npmjs.com/files/package.json#peerdependencies).
 
 ### Demo

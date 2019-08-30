@@ -55,7 +55,10 @@ class DropdownPicker extends Component {
 	render() {
 
 		const format = this.props.format ? this.props.format : "LLLL";
-		const value = this.props.value ? this.props.value : null;
+		let value = this.props.value ? this.props.value : null;
+		if(value instanceof Date){
+			value = moment(value);
+		}
 		const readableValue = value ? value.format(format) : "";
 		
 		return(

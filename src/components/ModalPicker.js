@@ -47,7 +47,11 @@ class ModalPicker extends Component {
 	render() {
 
 		const format = this.props.format ? this.props.format : "LLLL";
-		const readableValue = this.props.value ? this.props.value.format(format) : "";
+		let value = this.props.value ? this.props.value : null;
+		if(value instanceof Date){
+			value = moment(value);
+		}
+		const readableValue = value ? value.format(format) : "";
 
 		return(
 			<div>

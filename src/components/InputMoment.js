@@ -62,7 +62,12 @@ class InputMoment extends Component {
 		} = this.props;
 
 		const cls = cx('m-input-moment', className, theme !== 'default' ? theme : null);
-		const m = (this.state.value ? this.state.value : this.props.value ? this.props.value : moment()).clone();
+		let value = this.state.value ? this.state.value : this.props.value ? this.props.value : null;
+		if(value instanceof Date){
+			value = moment(value);
+		}
+		const m = (value ? value : moment()).clone();
+		
 		m.locale(locale);
 
 		return (
