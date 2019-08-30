@@ -10,12 +10,12 @@ import './app.less';
 
 class App extends Component {
   state = {
-    dropdown_picker1: moment(),
+    // dropdown_picker1: moment(),
     input_moment: moment(),
     modal_picker: moment(),
     dropdown_picker2: moment(),
   };
-  handleChange = (name, m) => {
+  handleChange(name, m){
     this.setState({[name]: m});
   };
 
@@ -33,11 +33,13 @@ class App extends Component {
           <DateTimePicker
             mode="dropdown"
             locale={"it"}
-            moment={this.state.dropdown_picker1}
+            // moment={this.state.dropdown_picker1}
+            value={this.state.dropdown_picker1}
+            placeholder="This is a placeholder"
             type={"datetime"}
             theme={"dark"}
             name="dropdown_picker1"
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             minStep={5}
           />
         </div>
@@ -49,9 +51,9 @@ class App extends Component {
               locale={"it"}
               type={"datetime"}
               theme={"dark"}
-              moment={this.state.input_moment}
+              value={this.state.input_moment}
               name="input_moment"
-              onChange={this.handleChange}
+              onChange={this.handleChange.bind(this)}
               minStep={5}
             />
           </div>
@@ -59,13 +61,13 @@ class App extends Component {
           <p>Modal datetime picker: </p>
           <div className="m-t">
             <DateTimePicker
-              //mode="modal"
+              //mode="modal" // is default mode
               locale={"it"}
               value={this.state.modal_picker}
               type={"date"}
               theme={"light"}
               name="modal_picker"
-              onChange={this.handleChange}
+              onChange={this.handleChange.bind(this)}
               minStep={5}
               labels={{
                 save: "Salva",
@@ -83,11 +85,12 @@ class App extends Component {
             <DateTimePicker
               mode="dropdown"
               locale={"it"}
-              moment={this.state.dropdown_picker2}
+              value={this.state.dropdown_picker2}
               type={"datetime"}
               theme={"dark"}
               name="dropdown_picker2"
-              onChange={this.handleChange}
+              onChange={this.handleChange.bind(this)}
+              autoOk={true}
               minStep={5}
             />
           </div>

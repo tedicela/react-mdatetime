@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import InputMoment from './InputMoment.js';
 
 const randomStr = (length = 5)=>{
@@ -26,6 +27,21 @@ class DropdownPicker extends Component {
 		};
 		this.input_id = "mdatetime-"+randomStr(6);
 	}
+	handleChange(name, m){
+		if(this.props.autoOk) this.close();
+		this.props.onChange(name, m);
+	}
+	handleKeyDown(event){
+		if(event.keyCode == 8){
+			this.props.onChange(name, m);
+			this.close();
+		}
+	}
+	handleClickOut(event){
+		if(event.target.id == event.currentTarget.id){
+			this.close();
+		}
+	}
 	open(){
 		this.setState({open: true})
 	}
@@ -39,31 +55,46 @@ class DropdownPicker extends Component {
 	render() {
 
 		const format = this.props.format ? this.props.format : "LLLL";
-		const readableValue = this.props.moment ? this.props.moment.format(format) : null;
+		const value = this.props.value ? this.props.value : null;
+		const readableValue = value ? value.format(format) : "";
 		
 		return(
 			<div>
-				<input id={this.input_id} className="form-control" type="text" onClick={this.open.bind(this)} value={readableValue} />
+				<input 
+					id={this.input_id} 
+					className={this.props.className ? this.props.className : "form-control"} 
+					type="text" 
+					onClick={this.open.bind(this)} 
+					value={readableValue} 
+					placeholder={this.props.placeholder} 
+					readOnly
+					onKeyDown={this.handleKeyDown.bind(this)}
+				/>
 				{this.state.open === true &&
+				
 				<React.Fragment>
 					<div style={{position: "relative"}}>
 						<InputMoment
 							className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
-							moment={this.props.moment}
+							value={this.props.value}
 							type={this.props.type}
 							theme={this.props.theme}
 							name={this.props.name}
-							onChange={this.props.onChange}
+							// onChange={this.props.onChange}
+							onChange={this.handleChange.bind(this)}
 							minStep={this.props.minStep}
 							locale={this.props.locale}
 							labels={this.props.labels}
 							onCancel={this.toggle.bind(this)}
 						/>
 					</div>
-					<div className="back-layer" onClick={this.close.bind(this)} ></div>
+					{ReactDOM.createPortal(<div id={this.input_id} className="back-layer" onClick={this.close.bind(this)} ></div>, document.body)}
 				</React.Fragment>}
 			</div>
 		)
 	}
 }
+DropdownPicker.defaultPicker = {
+	autoOk: true
+};
 export default DropdownPicker;

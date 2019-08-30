@@ -62,12 +62,11 @@ class InputMoment extends Component {
 		} = this.props;
 
 		const cls = cx('m-input-moment', className, theme !== 'default' ? theme : null);
-
-		const m = this.state.value ? this.state.value : this.props.moment ? this.props.moment : moment();
+		const m = (this.state.value ? this.state.value : this.props.value ? this.props.value : moment()).clone();
 		m.locale(locale);
 
 		return (
-			<div className={cls} {...props}>
+			<div className={cls} >
 				<div className="options">
 					{['datetime'].indexOf(type) > -1 &&
 					<button
@@ -110,7 +109,7 @@ class InputMoment extends Component {
 						labels={this.props.labels}
 					/>}
 				</div>
-				{this.props.showButtons === true ?
+				{this.props.showButtons &&
 					<div className="btn-container">
 						<button
 							type="button"
@@ -128,7 +127,6 @@ class InputMoment extends Component {
 						</button>
 
 					</div>
-					: null
 				}
 			</div>
 		);
