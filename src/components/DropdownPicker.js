@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import InputMoment from './InputMoment.js';
+import moment from 'moment';
 
 const randomStr = (length = 5)=>{
 	var text = "";
