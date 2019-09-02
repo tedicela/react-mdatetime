@@ -52,6 +52,9 @@ class ModalPicker extends Component {
 		if(value instanceof Date){
 			value = moment(value);
 		}
+		if(value){
+			value.locale(this.props.locale);
+		}
 		const readableValue = value ? value.format(format) : "";
 
 		return(
@@ -71,7 +74,7 @@ class ModalPicker extends Component {
 				<div  id={this.input_id+"-layer"} className="back-layer-modal" >
 					<div id={this.input_id} className={"modal-picker"} onClick={this.handleClickOut.bind(this)}>
 						<InputMoment
-						
+
 							autoOk={this.props.autoOk}
 							showButtons={this.props.showButtons}
 							prevMonthIcon={this.props.prevMonthIcon}

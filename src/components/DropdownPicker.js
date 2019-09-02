@@ -60,6 +60,9 @@ class DropdownPicker extends Component {
 		if(value instanceof Date){
 			value = moment(value);
 		}
+		if(value){
+			value.locale(this.props.locale);
+		}
 		const readableValue = value ? value.format(format) : "";
 		
 		return(

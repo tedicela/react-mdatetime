@@ -47,6 +47,9 @@ class InputMoment extends Component {
 	render() {
 		const {tab} = this.state;
 
+		console.log("locale: ", this.props.locale);
+		console.log("name: ", this.props.name);
+
 		const {
 			type,
 			theme,
