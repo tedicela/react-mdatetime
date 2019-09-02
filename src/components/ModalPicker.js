@@ -100,6 +100,7 @@ class ModalPicker extends Component {
 	}
 }
 ModalPicker.defaultProps={
+	format: "LLLL",
 	autoOk: false,
 	showButtons: true,
 	prevMonthIcon: 'ion-ios-arrow-left',

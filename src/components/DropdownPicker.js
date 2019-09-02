@@ -106,6 +106,7 @@ class DropdownPicker extends Component {
 	}
 }
 DropdownPicker.defaultProps = {
+	format: "LLLL",
 	autoOk: true,
 	showButtons: false,
 };
