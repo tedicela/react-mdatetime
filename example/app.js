@@ -62,6 +62,7 @@ class App extends Component {
           <div className="m-t">
             <DateTimePicker
               //mode="modal" // is default mode
+              autoOk={true}
               locale={"it"}
               value={this.state.modal_picker}
               type={"date"}

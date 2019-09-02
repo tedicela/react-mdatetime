@@ -71,21 +71,49 @@ class ModalPicker extends Component {
 				<div  id={this.input_id+"-layer"} className="back-layer-modal" >
 					<div id={this.input_id} className={"modal-picker"} onClick={this.handleClickOut.bind(this)}>
 						<InputMoment
-							locale={this.props.locale}
-							value={this.state.value ? this.state.value : this.props.value}
+						
+							autoOk={this.props.autoOk}
+							showButtons={this.props.showButtons}
+							prevMonthIcon={this.props.prevMonthIcon}
+							nextMonthIcon={this.props.nextMonthIcon}
+							minStep={this.props.minStep}
+							hourStep={this.props.hourStep}
 							type={this.props.type}
 							theme={this.props.theme}
+							labels={this.props.labels}
+							firstDayOfWeek={this.props.firstDayOfWeek}
+							locale={this.props.locale}
+
+							value={this.state.value ? this.state.value : this.props.value}
 							name={this.props.name}
 							onChange={this.handleChange.bind(this)}
-							minStep={this.props.minStep}
 							onCancel={this.close.bind(this)}
-							labels={this.props.labels}
-							showButtons={this.props.autoOk ? false : true}
+
 						/>
 					</div>
 				</div>, document.body)}
 			</div>
 		)
 	}
+}
+ModalPicker.defaultProps={
+	autoOk: false,
+	showButtons: true,
+	prevMonthIcon: 'ion-ios-arrow-left',
+	nextMonthIcon: 'ion-ios-arrow-right',
+	minStep: 1,
+	hourStep: 1,
+	type: "datetime",
+	theme: "default",
+	labels: {
+		save: "Save",
+		cancel: "Cancel",
+		date: "Date",
+		time: "Time",
+		hours: "Hours",
+		minutes: "Minutes",
+	},
+	firstDayOfWeek: 1,
+	locale: 'en',
 }
 export default ModalPicker;

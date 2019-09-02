@@ -33,7 +33,7 @@ class InputMoment extends Component {
 	}
 	handleChange = (m) => {
 		this.setState({value: m});
-		if(this.props.showButtons) return;
+		if(this.props.showButtons && !this.props.autoOk) return;
 		this.props.onChange(this.props.name, m);
 	}
 	handleClickTab = (e, tab) => {
