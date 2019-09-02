@@ -75,7 +75,7 @@ class ModalPicker extends Component {
 					<div id={this.input_id} className={"modal-picker"} onClick={this.handleClickOut.bind(this)}>
 						<InputMoment
 
-							autoOk={this.props.autoOk}
+							autoOk={this.props.type!='date' ? false : this.props.autoOk}
 							showButtons={this.props.showButtons}
 							prevMonthIcon={this.props.prevMonthIcon}
 							nextMonthIcon={this.props.nextMonthIcon}

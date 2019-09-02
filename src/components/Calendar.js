@@ -29,10 +29,13 @@ export default class Calendar extends Component {
     super(props);
     moment.locale(props.locale);
   }
+  componentWillMount(){
+    this.setState({moment: this.props.moment});
+  }
   selectDate = (i, w) => {
     const prevMonth = w === 0 && i > 7;
     const nextMonth = w >= 4 && i <= 14;
-    const m = this.props.moment;
+    const m = this.state.moment;
 
     if (prevMonth) m.subtract(1, 'month');
     if (nextMonth) m.add(1, 'month');
@@ -44,19 +47,21 @@ export default class Calendar extends Component {
 
   prevMonth = e => {
     e.preventDefault();
-    this.props.onChange(this.props.moment.subtract(1, 'month'));
+    // this.props.onChange(this.props.moment.subtract(1, 'month'));
+    this.setState({moment:this.state.moment.subtract(1, 'month')});
   };
 
   nextMonth = e => {
     e.preventDefault();
-    this.props.onChange(this.props.moment.add(1, 'month'));
+    // this.props.onChange(this.props.moment.add(1, 'month'));
+    this.setState({moment:this.state.moment.add(1, 'month')});
   };
 
   render() {
     
     let deltaDayOfWeek = this.props.firstDayOfWeek < 7 ? this.props.firstDayOfWeek : this.props.firstDayOfWeek - 7;
 
-    const m = this.props.moment;
+    const m = this.state.moment;
     const d = m.date();
     const d1 = m.clone().subtract(1, 'month').endOf('month').date();
     let d2 = m.clone().date(1).day() - deltaDayOfWeek;

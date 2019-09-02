@@ -29,7 +29,9 @@ class DropdownPicker extends Component {
 		this.input_id = "mdatetime-"+randomStr(6);
 	}
 	handleChange(name, m){
-		if(this.props.autoOk) this.close();
+		if(( this.props.type =='date' && this.props.autoOk) || this.props.showButtons){
+			this.close();
+		}
 		this.props.onChange(name, m);
 	}
 	handleKeyDown(event){
@@ -82,6 +84,8 @@ class DropdownPicker extends Component {
 				<React.Fragment>
 					<div style={{position: "relative"}}>
 						<InputMoment
+							autoOk={this.props.type!='date' ? false : this.props.autoOk}
+							showButtons={this.props.showButtons}
 							className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
 							value={this.props.value}
 							type={this.props.type}
@@ -101,7 +105,8 @@ class DropdownPicker extends Component {
 		)
 	}
 }
-DropdownPicker.defaultPicker = {
-	autoOk: true
+DropdownPicker.defaultProps = {
+	autoOk: true,
+	showButtons: false,
 };
 export default DropdownPicker;

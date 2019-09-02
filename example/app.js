@@ -36,7 +36,7 @@ class App extends Component {
             // moment={this.state.dropdown_picker1}
             value={this.state.dropdown_picker1}
             placeholder="This is a placeholder"
-            type={"datetime"}
+            type={"date"}
             theme={"dark"}
             name="dropdown_picker1"
             onChange={this.handleChange.bind(this)}
@@ -44,7 +44,7 @@ class App extends Component {
           />
         </div>
 
-        <p>Inline datetime picker: </p>
+        {/*<p>Inline datetime picker: </p>
         <div className="m-t">
             <DateTimePicker
               mode="inline"
@@ -56,7 +56,7 @@ class App extends Component {
               onChange={this.handleChange.bind(this)}
               minStep={5}
             />
-          </div>
+        </div>*/}
 
           <p>Modal datetime picker: </p>
           <div className="m-t">
@@ -92,6 +92,21 @@ class App extends Component {
               name="dropdown_picker2"
               onChange={this.handleChange.bind(this)}
               autoOk={true}
+              minStep={5}
+            />
+          </div>
+          <p>Dropdown datetime picker with buttons: </p>
+          <div className="m-t">
+            <DateTimePicker
+              mode="dropdown"
+              locale={"it"}
+              value={this.state.dropdown_picker2}
+              type={"datetime"}
+              theme={"dark"}
+              name="dropdown_picker2"
+              onChange={this.handleChange.bind(this)}
+              autoOk={true}
+              showButtons={true}
               minStep={5}
             />
           </div>

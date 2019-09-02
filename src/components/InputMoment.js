@@ -99,6 +99,7 @@ class InputMoment extends Component {
 					<Calendar
 						className={cx('tab', {'is-active': tab === 0})}
 						moment={m}
+						value={m}
 						onChange={this.handleChange}
 						prevMonthIcon={this.props.prevMonthIcon}
 						nextMonthIcon={this.props.nextMonthIcon}
