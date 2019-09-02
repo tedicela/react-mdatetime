@@ -80,7 +80,7 @@ class ModalPicker extends Component {
 							minStep={this.props.minStep}
 							onCancel={this.close.bind(this)}
 							labels={this.props.labels}
-							showButtons={true}
+							showButtons={this.props.autoOk ? false : true}
 						/>
 					</div>
 				</div>, document.body)}

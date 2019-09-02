@@ -92,7 +92,7 @@ class DropdownPicker extends Component {
 							onCancel={this.toggle.bind(this)}
 						/>
 					</div>
-					{ReactDOM.createPortal(<div id={this.input_id} className="back-layer" onClick={this.close.bind(this)} ></div>, document.body)}
+					<div id={this.input_id} className="back-layer" onClick={this.close.bind(this)} ></div>
 				</React.Fragment>}
 			</div>
 		)
