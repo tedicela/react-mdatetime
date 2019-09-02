@@ -42,9 +42,7 @@ class InputMoment extends Component {
 	}
 	handleSave = e => {
 		e.preventDefault();
-		if(this.state.value){
-			this.props.onChange(this.props.name, this.state.value);
-		}
+		this.props.onChange(this.props.name, this.state.value ? this.state.value : this.props.value);
 	}
 	render() {
 		const {tab} = this.state;
