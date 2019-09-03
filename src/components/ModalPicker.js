@@ -23,18 +23,28 @@ class ModalPicker extends Component {
 	handleKeyDown(event){
 		if(event.keyCode == 8){
 			this.props.onChange(this.props.name, null);
-			this.setState({open: false});
+			this.close(event);
 		}
 	}
 	handleChange(name, value){
 		this.props.onChange(this.props.name, value);
 		this.close();
 	}
+	handleClear(event){
+		this.props.onChange(this.props.name, null);
+	}
 	open(){
 		this.setState({open: true})
+		document.addEventListener("keydown", this.handleShortKeys.bind(this)); 
+	}
+	handleShortKeys(event){
+		if(event.keyCode == 27){
+			this.close(event);
+		}
 	}
 	close(event){
 		this.setState({open: false});
+		document.removeEventListener("keydown", this.handleShortKeys.bind(this)); 
 	}
 	handleClickOut(event){
 		if(event.target.id == event.currentTarget.id){
@@ -58,17 +68,20 @@ class ModalPicker extends Component {
 		const readableValue = value ? value.format(format) : "";
 
 		return(
-			<div>
+			<React.Fragment>
 				<input 
 					id={this.props.id ? this.props.id : this.input_id}
 					className={this.props.className ? this.props.className : "form-control"} 
 					type="text" 
+					onFocus={this.open.bind(this)} 
 					onClick={this.open.bind(this)} 
 					value={readableValue}
 					placeholder={this.props.placeholder} 
-					readOnly
+					// readOnly
 					onKeyDown={this.handleKeyDown.bind(this)}
 				/>
+				{this.props.value && <span className={"x-remove"} onClick={this.handleClear.bind(this)} />}
+
 				{this.state.open === true &&
 				ReactDOM.createPortal(
 				<div  id={this.input_id+"-layer"} className="back-layer-modal" >
@@ -95,7 +108,7 @@ class ModalPicker extends Component {
 						/>
 					</div>
 				</div>, document.body)}
-			</div>
+			</React.Fragment>
 		)
 	}
 }

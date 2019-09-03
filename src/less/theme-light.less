@@ -44,7 +44,7 @@
 				color: @color-blue;	
 			}
 		}
-		.current-day{
+		.current-day, .year-list li.current-year{
 			background-color: @color-darklight;
 			border-radius: 25px;
 			box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -57,12 +57,14 @@
 		}
 		thead td{
 			color: @color-blue;
-		}
-		tbody td{
-			color: @color-dark;
 			&.next-month, &.prev-month{
 				opacity: 0.5;
 			}
+		}
+		tbody td, .year-list{
+			color: @color-dark;
+		}
+		tbody td{
 			&:hover{
 				border-color: @color-darklight;
 				background-color: @color-darklight;

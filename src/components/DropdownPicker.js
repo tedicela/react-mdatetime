@@ -35,8 +35,8 @@ class DropdownPicker extends Component {
 		this.props.onChange(name, m);
 	}
 	handleKeyDown(event){
-		if(event.keyCode == 8){
-			this.props.onChange(name, m);
+		if(event.keyCode == 8){ // backspace
+			this.props.onChange(this.props.name, null);
 			this.close();
 		}
 	}
@@ -45,11 +45,21 @@ class DropdownPicker extends Component {
 			this.close();
 		}
 	}
+	handleClear(event){
+		this.props.onChange(this.props.name, null);
+	}
+	handleShortKeys(event){
+		if(event.keyCode == 27){
+			this.close(event);
+		}
+	}
 	open(){
 		this.setState({open: true})
+		document.addEventListener("keydown", this.handleShortKeys.bind(this)); 
 	}
 	close(){
 		this.setState({open: false});
+		document.removeEventListener("keydown", this.handleShortKeys.bind(this)); 
 	}
 	toggle(){
 		this.setState({open: !this.state.open});
@@ -68,40 +78,48 @@ class DropdownPicker extends Component {
 		const readableValue = value ? value.format(format) : "";
 		
 		return(
-			<div>
+			<React.Fragment>
 				<input 
 					id={this.input_id} 
 					className={this.props.className ? this.props.className : "form-control"} 
 					type="text" 
 					onClick={this.open.bind(this)} 
+					onFocus={this.open.bind(this)} 
 					value={readableValue} 
 					placeholder={this.props.placeholder} 
-					readOnly
+					// readOnly
 					onKeyDown={this.handleKeyDown.bind(this)}
 				/>
+				
+				{this.props.value && <span className={"x-remove"} onClick={this.handleClear.bind(this)} />}
+
 				{this.state.open === true &&
 				
 				<React.Fragment>
 					<div style={{position: "relative"}}>
 						<InputMoment
+							className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
 							autoOk={this.props.type!='date' ? false : this.props.autoOk}
 							showButtons={this.props.showButtons}
-							className={"dropdown "+(elementPosition(this.input_id).top < 500 ? "arrow-up" : "arrow-down")}
-							value={this.props.value}
+							prevMonthIcon={this.props.prevMonthIcon}
+							nextMonthIcon={this.props.nextMonthIcon}
+							minStep={this.props.minStep}
+							hourStep={this.props.hourStep}
 							type={this.props.type}
 							theme={this.props.theme}
-							name={this.props.name}
-							// onChange={this.props.onChange}
-							onChange={this.handleChange.bind(this)}
-							minStep={this.props.minStep}
-							locale={this.props.locale}
 							labels={this.props.labels}
+							firstDayOfWeek={this.props.firstDayOfWeek}
+							locale={this.props.locale}
+
+							value={this.props.value}
+							name={this.props.name}
+							onChange={this.handleChange.bind(this)}
 							onCancel={this.toggle.bind(this)}
 						/>
 					</div>
 					<div id={this.input_id} className="back-layer" onClick={this.close.bind(this)} ></div>
 				</React.Fragment>}
-			</div>
+			</React.Fragment>
 		)
 	}
 }

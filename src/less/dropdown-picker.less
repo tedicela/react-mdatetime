@@ -1,6 +1,23 @@
 @color-dark: #515865;
 
-
+.x-remove{
+  margin-left: -30px;
+  cursor: pointer;
+  display: inline-block;
+  z-index: 30;
+  position: relative;
+  padding: 3px 8px;
+  &::before {
+      content: 'x'; // here is your X(cross) sign.
+      font-weight: 300;
+      font-family: Arial, sans-serif;
+      font-size: 21px;
+  }
+  color: #ccc9c9;
+  &:hover{
+    color: #797979;
+  }
+}
 .back-layer{
   position: fixed;
   width: 100%;

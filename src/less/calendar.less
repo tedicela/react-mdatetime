@@ -81,6 +81,27 @@
 
     .current-date {
       color: @color-blue;
+      cursor: pointer;
+    }
+  }
+}
+.go-back{
+  position: absolute !important;
+  left: 15px;
+}
+.year-list{
+  list-style: none;
+  padding: 0px;
+  text-align: center;
+  font-size: 18px;
+  height: ~"calc(100% - 80px)";
+  overflow-y: scroll;
+
+  li{
+    padding: 8px;
+    &:hover{
+      cursor: pointer;
+      font-weight: 700;
     }
   }
 }

@@ -44,11 +44,9 @@ class InputMoment extends Component {
 		e.preventDefault();
 		this.props.onChange(this.props.name, this.state.value ? this.state.value : this.props.value);
 	}
+	
 	render() {
 		const {tab} = this.state;
-
-		console.log("locale: ", this.props.locale);
-		console.log("name: ", this.props.name);
 
 		const {
 			type,
