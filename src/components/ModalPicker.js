@@ -19,11 +19,20 @@ class ModalPicker extends Component {
 			open: false,
 		};
 		this.input_id = "mdatetime-modal-"+randomStr(6);
+		this.handleShortKeys = this.handleShortKeys.bind(this);
 	}
 	handleKeyDown(event){
-		if(event.keyCode == 8){
-			this.props.onChange(this.props.name, null);
-			this.close(event);
+		switch(event.keyCode){
+			case 8: // backspace
+				this.props.onChange(this.props.name, null);
+				this.close(event);
+			break;
+
+			case 40: // arrow-down
+				if(!this.state.open){
+					this.open();
+				}
+			break;
 		}
 	}
 	handleChange(name, value){
@@ -35,16 +44,16 @@ class ModalPicker extends Component {
 	}
 	open(){
 		this.setState({open: true})
-		document.addEventListener("keydown", this.handleShortKeys.bind(this)); 
+		document.addEventListener("keydown", this.handleShortKeys); 
 	}
 	handleShortKeys(event){
-		if(event.keyCode == 27){
+		if(event.keyCode == 27 && this.state.open){
 			this.close(event);
 		}
 	}
 	close(event){
 		this.setState({open: false});
-		document.removeEventListener("keydown", this.handleShortKeys.bind(this)); 
+		document.removeEventListener("keydown", this.handleShortKeys);
 	}
 	handleClickOut(event){
 		if(event.target.id == event.currentTarget.id){
@@ -53,6 +62,9 @@ class ModalPicker extends Component {
 	}
 	toggle(){
 		this.setState({open: !this.state.open});
+	}
+	none(){
+		//do nothing - 
 	}
 
 	render() {
@@ -68,13 +80,14 @@ class ModalPicker extends Component {
 		const readableValue = value ? value.format(format) : "";
 
 		return(
-			<React.Fragment>
+			<div className="react-mdatetime-input">
 				<input 
 					id={this.props.id ? this.props.id : this.input_id}
 					className={this.props.className ? this.props.className : "form-control"} 
 					type="text" 
 					onFocus={this.open.bind(this)} 
 					onClick={this.open.bind(this)} 
+					onChange={this.none.bind(this)} //just to not show the Warning message on console
 					value={readableValue}
 					placeholder={this.props.placeholder} 
 					// readOnly
@@ -108,7 +121,7 @@ class ModalPicker extends Component {
 						/>
 					</div>
 				</div>, document.body)}
-			</React.Fragment>
+			</div>
 		)
 	}
 }

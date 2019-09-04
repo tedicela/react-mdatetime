@@ -3,3 +3,27 @@
 @import 'theme-light';
 @import 'dropdown-picker';
 @import 'modal-picker';
+
+.react-mdatetime-input{
+    position: relative;
+  }
+  .x-remove{
+    // margin-left: -30px;
+    cursor: pointer;
+    // display: inline-block;
+    z-index: 30;
+    position: absolute;
+    padding: 3px 8px;
+    top: ~"calc(100% - 33px)";
+    right: 2px;
+    &::before {
+        content: 'x'; // here is your X(cross) sign.
+        font-weight: 300;
+        font-family: Arial, sans-serif;
+        font-size: 21px;
+    }
+    color: #ccc9c9;
+    &:hover{
+      color: #797979;
+    }
+  }

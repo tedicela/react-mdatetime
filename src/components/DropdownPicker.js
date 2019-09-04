@@ -27,6 +27,7 @@ class DropdownPicker extends Component {
 			open: false
 		};
 		this.input_id = "mdatetime-"+randomStr(6);
+		this.handleShortKeys = this.handleShortKeys.bind(this);
 	}
 	handleChange(name, m){
 		if(( this.props.type =='date' && this.props.autoOk) || this.props.showButtons){
@@ -35,9 +36,17 @@ class DropdownPicker extends Component {
 		this.props.onChange(name, m);
 	}
 	handleKeyDown(event){
-		if(event.keyCode == 8){ // backspace
-			this.props.onChange(this.props.name, null);
-			this.close();
+		switch(event.keyCode){
+			case 8: // backspace
+				this.props.onChange(this.props.name, null);
+				this.close();
+			break;
+
+			case 40: // arrow-down
+				if(!this.state.open){
+					this.open();
+				}
+			break;
 		}
 	}
 	handleClickOut(event){
@@ -49,22 +58,24 @@ class DropdownPicker extends Component {
 		this.props.onChange(this.props.name, null);
 	}
 	handleShortKeys(event){
-		if(event.keyCode == 27){
+		if(event.keyCode == 27 && this.state.open){
 			this.close(event);
 		}
 	}
 	open(){
 		this.setState({open: true})
-		document.addEventListener("keydown", this.handleShortKeys.bind(this)); 
+		document.addEventListener("keydown", this.handleShortKeys); 
 	}
 	close(){
 		this.setState({open: false});
-		document.removeEventListener("keydown", this.handleShortKeys.bind(this)); 
+		document.removeEventListener("keydown", this.handleShortKeys); 
 	}
 	toggle(){
 		this.setState({open: !this.state.open});
 	}
-
+	none(){
+		//do nothing - 
+	}
 	render() {
 
 		const format = this.props.format ? this.props.format : "LLLL";
@@ -78,13 +89,14 @@ class DropdownPicker extends Component {
 		const readableValue = value ? value.format(format) : "";
 		
 		return(
-			<React.Fragment>
+			<div className="react-mdatetime-input">
 				<input 
 					id={this.input_id} 
 					className={this.props.className ? this.props.className : "form-control"} 
 					type="text" 
 					onClick={this.open.bind(this)} 
 					onFocus={this.open.bind(this)} 
+					onChange={this.none.bind(this)} //just to not show the Warning message on console
 					value={readableValue} 
 					placeholder={this.props.placeholder} 
 					// readOnly
@@ -119,7 +131,7 @@ class DropdownPicker extends Component {
 					</div>
 					<div id={this.input_id} className="back-layer" onClick={this.close.bind(this)} ></div>
 				</React.Fragment>}
-			</React.Fragment>
+			</div>
 		)
 	}
 }

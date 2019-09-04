@@ -28,13 +28,16 @@ export default class Calendar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      open_yearUI: false
+      open_yearUI: false,
+      moment: props.moment,
     };
     moment.locale(props.locale);
+    this.handleShortKeys = this.handleShortKeys.bind(this);
+    document.addEventListener("keydown", this.handleShortKeys);
   }
   handleShortKeys(event){
     switch(event.keyCode){ 
-      case 13: // arrow-left
+      case 13: // Enter
         this.props.onChange(this.state.moment);
       break;
       case 37: // arrow-left
@@ -67,12 +70,8 @@ export default class Calendar extends Component {
       break;
 		}
 	}
-  componentWillMount(){
-    this.setState({moment: this.props.moment});
-    document.addEventListener("keydown", this.handleShortKeys.bind(this)); 
-  }
   componentWillUnmount(){
-    document.removeEventListener("keydown", this.handleShortKeys.bind(this)); 
+    document.removeEventListener("keydown", this.handleShortKeys); 
   }
   selectDate = (i, w) => {
     const prevMonth = w === 0 && i > 7;
