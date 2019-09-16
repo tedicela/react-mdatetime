@@ -81,6 +81,10 @@ class ModalPicker extends Component {
 
 		return(
 			<div className="react-mdatetime-input">
+				
+				{this.props.label && this.props.label.position=="before" && 
+					<label className={this.props.label.className}>{this.props.label.text}</label>}
+
 				<input 
 					id={this.props.id ? this.props.id : this.input_id}
 					className={this.props.className ? this.props.className : "form-control"} 
@@ -93,7 +97,12 @@ class ModalPicker extends Component {
 					// readOnly
 					onKeyDown={this.handleKeyDown.bind(this)}
 				/>
-				{this.props.value && <span className={"x-remove"} onClick={this.handleClear.bind(this)} />}
+				
+				{this.props.label && this.props.label.position=="after" && 
+					<label className={this.props.label.className}>{this.props.label.text}</label>}
+
+				{this.props.isClearable && this.props.value && 
+					<span className={"x-remove"} onClick={this.handleClear.bind(this)} />}
 
 				{this.state.open === true &&
 				ReactDOM.createPortal(
@@ -125,7 +134,7 @@ class ModalPicker extends Component {
 		)
 	}
 }
-ModalPicker.defaultProps={
+ModalPicker.defaultProps = {
 	format: "LLLL",
 	autoOk: false,
 	showButtons: true,
@@ -145,5 +154,7 @@ ModalPicker.defaultProps={
 	},
 	firstDayOfWeek: 1,
 	locale: 'en',
+	label: false,
+	isClearable: false,
 }
 export default ModalPicker;

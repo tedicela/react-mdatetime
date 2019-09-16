@@ -90,6 +90,10 @@ class DropdownPicker extends Component {
 		
 		return(
 			<div className="react-mdatetime-input">
+				
+				{this.props.label && this.props.label.position=="before" && 
+					<label className={this.props.label.className}>{this.props.label.text}</label>}
+
 				<input 
 					id={this.input_id} 
 					className={this.props.className ? this.props.className : "form-control"} 
@@ -103,7 +107,11 @@ class DropdownPicker extends Component {
 					onKeyDown={this.handleKeyDown.bind(this)}
 				/>
 				
-				{this.props.value && <span className={"x-remove"} onClick={this.handleClear.bind(this)} />}
+				{this.props.label && this.props.label.position=="after" && 
+					<label className={this.props.label.className}>{this.props.label.text}</label>}
+
+				{this.props.isClearable && this.props.value && 
+					<span className={"x-remove"} onClick={this.handleClear.bind(this)} />}
 
 				{this.state.open === true &&
 				
@@ -139,5 +147,7 @@ DropdownPicker.defaultProps = {
 	format: "LLLL",
 	autoOk: true,
 	showButtons: false,
+	label: false,
+	isClearable: false,
 };
 export default DropdownPicker;
